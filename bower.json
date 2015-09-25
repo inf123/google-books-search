@@ -1,0 +1,13 @@
+{
+  "name": "google-books-search",
+  "version": "0.0.1",
+  "homepage": "https://github.com/inf123/google-books-search",
+  "authors": [
+    "Christian Nilsson <inf123@gmail.com>"
+  ],
+  "private": true,
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "angular": "~1.4.6"
+  }
+}
