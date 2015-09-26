@@ -1,16 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="bookSearchApp">
 <head>
     <title>Google Books Search</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
-    <h1>Google Books Search</h1>
+<body ng-controller="BookSearchCtrl">
+    <div class="container">
+        <h1>Google Books Search</h1>
+
+        <div class="row">
+            <div class="col-md-3">
+                <!-- Search box -->
+                <form ng-submit="search()">
+                    <div class="input-group">
+                        <input type="text" placeholder="Search books" class="form-control" ng-model="query">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+
+                <!-- Search history -->
+                <h3>Recent Searches</h3>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">lorem ipsum</a></li>
+                    <li><a href="#">dolor sit amet</a></li>
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <!-- Book list -->
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="book in books">
+                        <h4>{{ book.volumeInfo.title }}</h4>
+                        <h5>{{ book.volumeInfo.subtitle }}</h5>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
     
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
+    
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
 </body>
 </html>
