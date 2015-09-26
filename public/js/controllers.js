@@ -4,6 +4,7 @@ bookSearchApp.controller('BookSearchCtrl', ['$scope', '$http',
   function ($scope, $http) {
     $scope.query = '';
     $scope.queryHistory = [];
+    $scope.books = [];
     
     // Search form submitted
     $scope.search = function() {
@@ -38,4 +39,3 @@ bookSearchApp.controller('BookSearchCtrl', ['$scope', '$http',
     };
   }
 ]);
-
