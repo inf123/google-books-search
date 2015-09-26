@@ -27,8 +27,9 @@
                 <!-- Search history -->
                 <h3>Recent Searches</h3>
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#">lorem ipsum</a></li>
-                    <li><a href="#">dolor sit amet</a></li>
+                    <li ng-repeat="query in queryHistory | orderBy:'$index':true">
+                        <a href ng-click="searchHistory(query)">{{ query }}</a>
+                    </li>
                 </ul>
             </div>
             <div class="col-md-9">
