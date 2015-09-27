@@ -4,12 +4,13 @@
     <title>Google Books Search</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body ng-controller="BookSearchCtrl">
     <div class="container">
         <h1>Google Books Search</h1>
-
+        
         <div class="row">
             <div class="col-md-3">
                 <!-- Search box -->
@@ -33,11 +34,20 @@
                 </ul>
             </div>
             <div class="col-md-9">
+                <span class="glyphicon glyphicon-refresh spinning" aria-hidden="true" ng-show="loading"></span>
                 <!-- Book list -->
-                <ul class="list-group">
+                <ul class="list-group" ng-hide="loading">
                     <li class="list-group-item" ng-repeat="book in books">
-                        <h4>{{ book.volumeInfo.title }}</h4>
-                        <h5>{{ book.volumeInfo.subtitle }}</h5>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <img ng-src="{{ book.volumeInfo.imageLinks.thumbnail }}" style="width:100%;">
+                            </div>
+                            <div class="col-md-10">
+                                <h4>{{ book.volumeInfo.title }}</h4>
+                                <h5>{{ book.volumeInfo.subtitle }}</h5>
+                                <p ng-bind-html="book.searchInfo.textSnippet"></p>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -49,6 +59,7 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>

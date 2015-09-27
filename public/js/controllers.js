@@ -5,6 +5,7 @@ bookSearchApp.controller('BookSearchCtrl', ['$scope', '$http', '$cookies',
     $scope.query = '';
     $scope.queryHistory = [];
     $scope.books = [];
+    $scope.loading = false;
 
     // Get search query history from cookie
     if(angular.isArray($cookies.getObject('query_history'))) {
@@ -23,6 +24,8 @@ bookSearchApp.controller('BookSearchCtrl', ['$scope', '$http', '$cookies',
         $cookies.putObject('query_history', $scope.queryHistory);
       }
 
+      $scope.loading = true;
+      
       //var apiUrl = 'data/books.json';
       var apiUrl = 'https://www.googleapis.com/books/v1/volumes';
 
@@ -33,6 +36,8 @@ bookSearchApp.controller('BookSearchCtrl', ['$scope', '$http', '$cookies',
           $scope.query = '';
         }, function(response) {
           alert('Error loading book list.');
+        }).finally(function() {
+          $scope.loading = false;
         });
     };
 
