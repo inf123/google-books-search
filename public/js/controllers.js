@@ -1,15 +1,18 @@
 'use strict';
 
-bookSearchApp.controller('BookSearchCtrl', ['$scope', '$http',
-  function ($scope, $http) {
+bookSearchApp.controller('BookSearchCtrl', ['$scope', '$http', '$cookies',
+  function ($scope, $http, $cookies) {
     $scope.query = '';
     $scope.queryHistory = [];
     $scope.books = [];
+
+    // Get search query history from cookie
+    if(angular.isArray($cookies.getObject('query_history'))) {
+      $scope.queryHistory = $cookies.getObject('query_history');
+    }
     
     // Search form submitted
     $scope.search = function() {
-      console.log('Search query: ' + $scope.query);
-
       // Add query to search history if unique
       if($scope.queryHistory.indexOf($scope.query) < 0) {
         $scope.queryHistory.push($scope.query);
@@ -17,6 +20,7 @@ bookSearchApp.controller('BookSearchCtrl', ['$scope', '$http',
         while($scope.queryHistory.length > 10) {
           $scope.queryHistory.shift();
         }
+        $cookies.putObject('query_history', $scope.queryHistory);
       }
 
       //var apiUrl = 'data/books.json';

@@ -9,6 +9,7 @@
   "dependencies": {
     "bootstrap": "~3.3.5",
     "angular": "~1.4.6",
-    "angular-mocks": "~1.4.6"
+    "angular-mocks": "~1.4.6",
+    "angular-cookies": "~1.4.6"
   }
 }

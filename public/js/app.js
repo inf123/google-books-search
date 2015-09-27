@@ -1,3 +1,3 @@
 'use strict';
 
-var bookSearchApp = angular.module('bookSearchApp', []);
+var bookSearchApp = angular.module('bookSearchApp', ['ngCookies']);
