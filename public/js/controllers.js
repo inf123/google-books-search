@@ -46,5 +46,11 @@ bookSearchApp.controller('BookSearchCtrl', ['$scope', '$http', '$cookies',
       $scope.query = query;
       $scope.search();
     };
+
+    // Clear search history
+    $scope.clearHistory = function() {
+      $scope.queryHistory = [];
+      $cookies.remove('query_history');
+    }
   }
 ]);

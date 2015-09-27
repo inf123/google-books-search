@@ -28,6 +28,7 @@ describe('Controllers', function() {
         scope.search();
         httpMock.flush();
         expect(scope.query).toBe('');
+        scope.clearHistory();
       });
     });
     
@@ -40,6 +41,7 @@ describe('Controllers', function() {
         scope.query = 'lorem ipsum';
         scope.search();
         expect(scope.queryHistory.length).toBe(1);
+        scope.clearHistory();
       });
 
       it('should have 1 item after 2 identical searches', function() {
@@ -48,6 +50,7 @@ describe('Controllers', function() {
         scope.query = 'dolor sit amet';
         scope.search();
         expect(scope.queryHistory.length).toBe(1);
+        scope.clearHistory();
       });
 
       it('should have 10 items after 11 unique searches', function() {
